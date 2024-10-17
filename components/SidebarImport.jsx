@@ -46,7 +46,7 @@ export default function SidebarImport() {
         style={{ textAlign: "center", margin: "16px", borderRadius: "8px" }}
       >
         <label htmlFor="file" style={{ cursor: "pointer", width: "100%" }}>
-          Upload Markdown File
+          Upload Markdown
         </label>
         <input
           type="file"

@@ -7,6 +7,7 @@ import dayjs from "dayjs";
 import { addNote } from "@/lib/redis";
 import { Buffer } from "buffer";
 
+//将 formData 作为请求体传入
 export async function POST(request) {
   // 获取 formData
   const formData = await request.formData();
@@ -22,6 +23,7 @@ export async function POST(request) {
   const relativeUploadDir = `/uploads/${dayjs().format("YY-MM-DD")}`;
   const uploadDir = join(process.cwd(), "public", relativeUploadDir);
 
+  // 检查目录是否存在，不存在则创建
   try {
     await stat(uploadDir);
   } catch (e) {
@@ -38,8 +40,8 @@ export async function POST(request) {
 
   try {
     // 写入文件
-    const uniqueSuffix = `${Math.random().toString(36).slice(-6)}`;
-    const filename = file.name.replace(/\.[^/.]+$/, "");
+    const uniqueSuffix = `${Math.random().toString(36).slice(-6)}`; //生成随机字符串
+    const filename = file.name.replace(/\.[^/.]+$/, ""); //去掉文件扩展名
     const uniqueFilename = `${filename}-${uniqueSuffix}.${mime.getExtension(
       file.type
     )}`;

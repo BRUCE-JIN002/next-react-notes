@@ -1,11 +1,8 @@
 import SidebarNoteListFilter from "@/components/SidebarNoteListFilter";
 import SidebarNoteItemHeader from "@/components/SidebarNoteItemHeader";
 import { getAllNotes } from "@/lib/redis";
-import { sleep } from "@/lib/utils";
 
 export default async function SidebarNoteList() {
-  await sleep(1000);
-
   const notes = await getAllNotes();
 
   if (Object.entries(notes).length == 0) {
